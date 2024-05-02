@@ -1,0 +1,1 @@
+# QRcode.js
