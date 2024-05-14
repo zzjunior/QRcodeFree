@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center poppins-light">Gerador de QRcode</h1>
+        <h1 class="text-center poppins-light">QRcode free</h1>
         <div id="alertDiv" class="mt-3"></div>
         <div class="row justify-content-center mt-3">
             <div class="col-8 col-md-6">
@@ -20,18 +20,19 @@
             </div>
         </div>
         <div class="row justify-content-center mt-3">
-            <div class="col-8 col-md-6">
-                <button onclick="generateQRCode()" class="btn btn-primary poppins-extralight">Gerar QRcode</button>
+            <div class="col-8 col-md-6 text-center">
+                <button id="gerarQR" onclick="generateQRCode()" class="btn btn-primary poppins-extralight">Gerar</button>
             </div>
         </div>
-        <div class="row justify-content-center mt-3">
-            <div class="col-8 col-md-6">
-                <div id="qrcode" class="text-center"></div>
-            </div>
+        <div class="canva_qr mt-5 mb-3 shadow-lg">
+            <a id="qrcode" alt="qrcode"></a>
         </div>
         <div class="row justify-content-center mt-3">
-            <div class="col-8 col-md-6">
-                <button onclick="downloadQRCode()" class="btn btn-success poppins-extralight">Baixar QRcode</button>
+            <div class="col-8 col-md-6 text-center">
+                <button id="download" onclick="downloadQRCode()" class="btn btn-success poppins-extralight text-center" style="display: none;">Download</button>
+            </div>
+            <div class="text-center">
+                <button id="reset" onclick="location.reload()" class="btn btn-dark-subtitle poppins-extralight text-center" style="display: none;">Novo QRcode</button>
             </div>
         </div>
     </div>

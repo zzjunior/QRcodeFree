@@ -115,3 +115,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+.canva_qr {
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}

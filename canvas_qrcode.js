@@ -1,7 +1,10 @@
 function generateQRCode() {
     var text = document.getElementById('text').value.trim();
     var alertDiv = document.getElementById('alertDiv');
-
+    var buttonDownload = document.getElementById('download');
+    var buttonGenerate = document.getElementById('gerarQR');
+    var resetQRcode = document.getElementById('reset');
+    
     if (text === "") {
         alertDiv.innerHTML = `
             <div id="alert" class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -23,7 +26,7 @@ function generateQRCode() {
     if (qrcodeElement.innerHTML.trim() !== "") {
         alertDiv.innerHTML = `
             <div id="alert" class="alert alert-warning alert-dismissible fade show" role="alert">
-                O QR code já foi gerado para esta URL.
+                O QR code já foi gerado. Clique em "Novo QRcode" para gerar um novo.
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         `;
@@ -51,6 +54,9 @@ function generateQRCode() {
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     `;
+    buttonDownload.style.display = 'inline-block';
+    buttonGenerate.style.display = 'none';
+    resetQRcode.style.display = 'inline-block';
 
     // Esconder o alerta após 2 segundos
     setTimeout(function() {
@@ -60,6 +66,8 @@ function generateQRCode() {
     // Esconder o QR code após um minuto
     setTimeout(function() {
         qrcodeElement.innerHTML = "";
+        buttonDownload.style.display = 'none';
+        buttonGenerate.style.display = 'inline-block';
     }, 60000);
 }
 
