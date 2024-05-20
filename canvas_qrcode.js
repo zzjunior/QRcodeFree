@@ -1,3 +1,14 @@
+// validar URL
+function isValidURL(url) {
+    var pattern = new RegExp('^(https?:\\/\\/)?' + // protocolo
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domínio e nome de host
+        '((\\d{1,3}\\.){3}\\d{1,3}))' + // ou endereço IP (v4)
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // porta e caminho
+        '(\\?[;&a-z\\d%_.~+=-]*)?' + // string de consulta
+        '(\\#[-a-z\\d_]*)?$', 'i'); // fragmento de URL
+    return !!pattern.test(url);
+}
+
 function generateQRCode() {
     var text = document.getElementById('text').value.trim();
     var alertDiv = document.getElementById('alertDiv');
@@ -9,6 +20,23 @@ function generateQRCode() {
         alertDiv.innerHTML = `
             <div id="alert" class="alert alert-danger alert-dismissible fade show" role="alert">
                 Por favor, digite uma URL antes de gerar o QR code.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        `;
+
+        // Esconder o alerta após 2 segundos
+        setTimeout(function() {
+            alertDiv.innerHTML = "";
+        }, 2000);
+
+        return;
+    }
+
+    // Verificar se a URL é válida
+    if (!isValidURL(text)) {
+        alertDiv.innerHTML = `
+            <div id="alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+                Por favor, digite uma URL válida.
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         `;
@@ -88,3 +116,4 @@ document.addEventListener('click', function(e) {
         document.getElementById('alertDiv').innerHTML = "";
     }
 });
+
