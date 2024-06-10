@@ -1,1 +1,1 @@
-# QRcode.js
+# QRcodeFree
